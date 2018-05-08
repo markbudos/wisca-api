@@ -51,12 +51,12 @@ function getSchools(classification) {
 
 function getSchool(schoolId) {
 	return Schools().select('school', 'schoolid', 'size', 
-			'u1.name as coach1', 'u1.affiliation as aff1', 
-			'u2.name as coach2', 'u2.affiliation as aff2', 
-			'u3.name as coach3', 'u3.affiliation as aff3',
-			'u4.name as coach4', 'u4.affiliation as aff4',
-			'u5.name as coach5', 'u5.affiliation as aff5',
-			'u6.name as coach6', 'u6.affiliation as aff6').
+			'u1.userid as coachid1', 'u1.name as coach1', 'u1.affiliation as aff1', 
+			'u2.userid as coachid2', 'u2.name as coach2', 'u2.affiliation as aff2', 
+			'u3.userid as coachid3', 'u3.name as coach3', 'u3.affiliation as aff3',
+			'u4.userid as coachid4', 'u4.name as coach4', 'u4.affiliation as aff4',
+			'u5.userid as coachid5', 'u5.name as coach5', 'u5.affiliation as aff5',
+			'u6.userid as coachid6', 'u6.name as coach6', 'u6.affiliation as aff6').
 		leftJoin('users as u1', 'schools.coachid1', 'u1.userid').
 		leftJoin('users as u2', 'schools.coachid2', 'u2.userid').
 		leftJoin('users as u3', 'schools.coachid3', 'u3.userid').
