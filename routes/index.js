@@ -71,8 +71,19 @@ router.get('/athletes/:schoolid/:yearcutoff', function(req, res, next) {
 // *** GET single show *** //
 router.get('/school/:id', function(req, res, next) {
   queries.getSchool(req.params.id)
-  .then(function(show) {
-    res.status(200).json(show);
+  .then(function(school) {
+    res.status(200).json(school);
+  })
+  .catch(function(error) {
+    next(error);
+  });
+});
+
+// *** GET single show *** //
+router.put('/school/:id', function(req, res, next) {
+  queries.setSchool(req.body)
+  .then(function(school) {
+    res.status(200).json(school);
   })
   .catch(function(error) {
     next(error);

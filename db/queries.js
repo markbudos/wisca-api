@@ -68,6 +68,29 @@ function getSchool(schoolId) {
 		});
 }
 
+function getCoachId(id) {
+	return id == -1 ? null : id;
+}
+
+function setSchool(values) {
+	Schools()
+		.where({'schoolid': values.schoolid})
+		.update({
+			'size': values.size,
+			'school': values.school,
+			'coachid1': getCoachId(values.coachid1),
+			'coachid2': getCoachId(values.coachid2),
+			'coachid3': getCoachId(values.coachid3),
+			'coachid4': getCoachId(values.coachid4),
+			'coachid5': getCoachId(values.coachid5),
+			'coachid6': getCoachId(values.coachid6)
+		})
+		.then(count => {
+			//console.log(count);
+		});
+	return getSchool(values.schoolid);
+}
+
 function getUsers(active) {
 	query = Users().select();
 	if (active) {
@@ -154,6 +177,7 @@ module.exports = {
 	getAllEvents: getAllEvents,
 	getSchools: getSchools,
 	getSchool: getSchool,
+	setSchool: setSchool,
 	getUsers: getUsers,
 	getResults: getResults,
 	getAthletes: getAthletes
